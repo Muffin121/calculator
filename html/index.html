@@ -4,16 +4,99 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../dist/css/main.css" />
-    <title>Document</title>
+    <title>Calculator</title>
   </head>
   <body>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-      accusantium aliquam tempora in vero adipisci voluptas deleniti quia eaque
-      assumenda? Recusandae, alias eveniet aperiam hic aliquam deleniti,
-      repellat accusamus et consequatur aspernatur atque quae cumque sapiente
-      dolorum possimus vitae perferendis eum praesentium incidunt, vel suscipit
-      ratione? Reiciendis officia porro fugiat?
-    </p>
+    <div class="container">
+      <input type="text" class="output__text" />
+
+      <div class="reset__buttons">
+        <div class="delete__button" role="button" ontap>Удалить всё</div>
+      </div>
+      <div class="container__buttons--action">
+        <div class="special__characters">
+          <div class="grid__container">
+            <div class="button-pow" role="button">
+              <span
+                >a
+                <span class="vertical-text">2</span>
+              </span>
+            </div>
+            <div class="button-pow-b" role="button">
+              <span
+                >a
+                <span class="vertical-text">b</span>
+              </span>
+            </div>
+            <div class="button-module">
+              <span>|a|</span>
+            </div>
+            <div class="button-sqrt" role="button">
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  enable-background="new 0 0 32 32"
+                  viewBox="0 0 32 32"
+                  id="square-root"
+                  width="32"
+                  height="32"
+                >
+                  <path
+                    id="_x30_7"
+                    d="M8,30c-0.416,0-0.7896-0.2578-0.9365-0.6489L4.3071,22H3c-0.5522,0-1-0.4478-1-1s0.4478-1,1-1h2c0.417,0,0.79,0.2588,0.9365,0.6489l1.9702,5.2539l7.1377-23.1968C15.1733,2.2861,15.561,2,16,2h13c0.5522,0,1,0.4478,1,1s-0.4478,1-1,1H16.7388L8.9556,29.2939c-0.1255,0.4092-0.4976,0.6929-0.9253,0.7056C8.02,30,8.0098,30,8,30z"
+                  ></path>
+                </svg>
+              </span>
+            </div>
+            <div class="button-sqrt-n" role="button">
+              <span
+                ><img
+                  src="../icons/Russian_radical.svg.png"
+                  alt=""
+                  width="42"
+                  height="42"
+              /></span>
+            </div>
+            <div class="pi-symbol" role="button">
+              <span>
+                <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 588.42 568.88"
+                  preserveAspectRatio="xMidYMid meet"
+                >
+                  <g style="transform: scale(0.64); transform-origin: center">
+                    <path
+                      fill="currentColor"
+                      d="M 10.499686,177.03840 L 31.174931,178.56990 C 52.615925,154.32116 61.039171,82.595924 187.38789,96.634671 C 182.79339,403.95560 48.021426,436.37234 56.444675,499.41907 C 59.507674,535.15406 87.840417,557.10556 118.47041,558.38181 C 215.21014,555.06356 210.87089,424.63084 240.99038,95.868921 L 365.80760,95.868921 C 359.17110,211.75239 341.04836,327.63586 339.00636,441.22208 C 340.53786,516.77606 386.48285,557.10556 446.97708,557.61606 C 546.52456,560.93431 577.92030,444.79558 577.92030,395.27709 L 556.47931,395.27710 C 554.43731,436.11709 534.78306,465.47083 492.92207,467.25758 C 378.82535,468.78908 441.61683,266.63113 442.38258,97.400421 L 577.92030,98.166171 L 577.15455,11.636437 C 13.807491,8.9075799 85.312284,-2.1366151 10.499686,177.03840 z"
+                    />
+                  </g>
+                </svg>
+              </span>
+            </div>
+            <div class="">
+              <span>sin</span>
+            </div>
+            <div class="">
+              <span>cos</span>
+            </div>
+            <div class="">
+              <span>tan</span>
+            </div>
+            <div class="">
+              <span>(</span>
+            </div>
+            <div class="">
+              <span>)</span>
+            </div>
+            <div class="">
+              <span>,</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
