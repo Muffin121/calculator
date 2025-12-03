@@ -4,34 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../dist/css/main.css" />
+    <script src="../scripts/main.js" defer></script>
     <title>Calculator</title>
   </head>
   <body>
-    <div class="container">
-      <input type="text" class="output__text" name="outputText" />
+    <main class="container main" data-js-container> 
+      <input type="text" class="output__text" name="outputText" data-js-output-text/>
 
-      <div class="reset__buttons">
-        <div class="delete__button" role="button" ontap>Удалить всё</div>
+      <div class="reset__buttons" data-js-reset-buttons>
+        <div class="button-delete" role="button" ontap data-js-button-delete>Удалить всё</div>
       </div>
-      <div class="container__buttons--action">
-        <div class="special__characters">
-          <div class="grid__container">
-            <div class="button-pow" role="button">
+      <div class="container__buttons--action" data-js-conrainer-buttons-action>
+        <div class="special__characters" data-js-special-characters>
+          <div class="grid__container" data-js-grid-container>
+            <div class="button-pow" role="button" data-js-button-pow>
               <span
                 >a
                 <span class="vertical-text">2</span>
               </span>
             </div>
-            <div class="button-pow-b" role="button">
+            <div class="button-pow-b" role="button" data-js-button-pow-b>
               <span
                 >a
                 <span class="vertical-text">b</span>
               </span>
             </div>
-            <div class="button-module">
+            <div class="button-module" data-js-button-module>
               <span>|a|</span>
             </div>
-            <div class="button-sqrt" role="button">
+            <div class="button-sqrt" role="button" data-js-button-sqrt>
               <span
                 ><svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +49,7 @@
                 </svg>
               </span>
             </div>
-            <div class="button-sqrt-n" role="button">
+            <div class="button-sqrt-n" role="button" data-js-button-sqrt-n>
               <span
                 ><img
                   src="../icons/Russian_radical.svg.png"
@@ -57,7 +58,7 @@
                   height="36"
               /></span>
             </div>
-            <div class="pi-symbol" role="button">
+            <div class="pi-symbol" role="button" data-js-button-pi-symbol>
               <span>
                 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                 <svg
@@ -76,83 +77,83 @@
                 </svg>
               </span>
             </div>
-            <div class="button-sin" role="button">
+            <div class="button-sin" role="button" data-js-button-sin>
               <span>sin</span>
             </div>
-            <div class="button-cos" role="button">
+            <div class="button-cos" role="button" data-js-button-cos>
               <span>cos</span>
             </div>
-            <div class="button-tan" role="button">
+            <div class="button-tan" role="button" data-js-button-tan>
               <span>tan</span>
             </div>
-            <div class="button-left-blacket" role="button">
+            <div class="button-left-blacket" role="button" data-js-button-left-blacket>
               <span>(</span>
             </div>
-            <div class="button-right-bracket" role="button">
+            <div class="button-right-bracket" role="button" data-js-button-right-bracket>
               <span>)</span>
             </div>
-            <div class="button-comma" role="button">
+            <div class="button-comma" role="button" data-js-button-comma>
               <span>,</span>
             </div>
           </div>
-          <div class="grid__container-numbers">
-            <div class="number-seven" role="button">
+          <div class="grid__container-numbers" data-js-grid-container-numbers>
+            <div class="number-seven" role="button" data-js-number-seven>
               <span>7</span>
             </div>
-            <div class="number-eight" role="button">
+            <div class="number-eight" role="button" data-js-number-eight>
               <span>8</span>
             </div>
-            <div class="number-nine" role="button">
+            <div class="number-nine" role="button" data-js-number-nine>
               <span>9</span>
             </div>
-            <div class="symbol-division" role="button">
+            <div class="symbol-division" role="button" data-js-symbol-division>
               <span>/</span>
             </div>
-            <div class="number-four" role="button">
+            <div class="number-four" role="button" data-js-number-four>
               <span>4</span>
             </div>
-            <div class="number-five" role="button">
+            <div class="number-five" role="button" data-js-number-five>
               <span>5</span>
             </div>
-            <div class="number-six" role="button">
+            <div class="number-six" role="button" data-js-number-six>
               <span>6</span>
             </div>
-            <div class="symbol-multiplication" role="button">
+            <div class="symbol-multiplication" role="button" data-js-symbol-multiplication>
               <span>*</span>
             </div>
-            <div class="number-one" role="button">
+            <div class="number-one" role="button" data-js-number-one>
               <span>1</span>
             </div>
-            <div class="number-two" role="button">
+            <div class="number-two" role="button" data-js-number-two>
               <span>2</span>
             </div>
-            <div class="number-three" role="button">
+            <div class="number-three" role="button" data-js-number-three>
               <span>3</span>
             </div>
-            <div class="symbol-minus" role="button">
+            <div class="symbol-minus" role="button" data-js-symbol-minus>
               <span>-</span>
             </div>
-            <div class="number-zero" role="button">
+            <div class="number-zero" role="button" data-js-number-zero>
               <span>0</span>
             </div>
-            <div class="symbol-dot" role="button">
+            <div class="symbol-dot" role="button" data-js-symbol-dot>
               <span>.</span>
             </div>
-            <div class="symbol-ans" role="button">
+            <div class="symbol-ans" role="button" data-js-symbol-ans>
               <span>ans</span>
             </div>
-            <div class="symbol-plus" role="button">
+            <div class="symbol-plus" role="button" data-js-symbol-plus>
               <span>+</span>
             </div>
           </div>
-          <div class="grid__container-additionally">
-            <div class="button-proccent" role="button">
+          <div class="grid__container-additionally" data-js-grid-container-additionally>
+            <div class="button-proccent" role="button" data-js-button-proccent>
               <span>%</span>
             </div>
-            <div class="button-fraction" role="button">
+            <div class="button-fraction" role="button" data-js-button-fraction>
               <span>a/b</span>
             </div>
-            <div class="button-arrow-left" role="button">
+            <div class="button-arrow-left" role="button" data-js-button-arrow-left>
               <span
                 ><?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                 <svg
@@ -172,7 +173,7 @@
                 </svg>
               </span>
             </div>
-            <div class="button-arrow-right" role="button">
+            <div class="button-arrow-right" role="button" data-js-button-arrow-right>
               <span
                 ><?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                 <svg
@@ -192,7 +193,7 @@
                 </svg>
               </span>
             </div>
-            <div class="button-delete-symbol" role="button">
+            <div class="button-delete-symbol" role="button" data-js-button-delete-symbol>
               <span
                 ><?xml version="1.0" encoding="UTF-8" standalone="no"?>
                 <svg
@@ -228,7 +229,7 @@
                 </svg>
               </span>
             </div>
-            <div class="button-arrow-confirmation" role="button">
+            <div class="button-arrow-confirmation" role="button" data-js-button-arrow-confirmation>
               <span
                 ><svg
                   width="32px"
@@ -252,6 +253,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
   </body>
 </html>
