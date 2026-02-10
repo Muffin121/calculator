@@ -54,6 +54,7 @@ selectorsGridContainerAdditionally = {
 
 //поле для ввода и вывода символов
 let outputText = document.querySelector('[data-js-output-text]');
+let buttonDeleteAll = document?.querySelector('[data-js-button-delete]');
 
 //все контейнеры
 const mainContainer = document?.querySelector(selectorsContainers.mainContainer);
@@ -127,12 +128,17 @@ function actionNumbersButtons(){
                 shouldClearOnNumber = false;
             }
 
-            outputText.value += digit;
+            var num = outputText.value + digit;
+            outputText.value = num;
+            sessionStorage.setItem('firstNum', num);
+            
         });
+        
     });
+    
 }
 
-function actionSymbolButtons() {
+ function actionSymbolButtons() {
     const operators = [
         symbolPlus,
         symbolMinus,
@@ -140,14 +146,96 @@ function actionSymbolButtons() {
         symbolDivision
     ];
 
-    operators.forEach(operatorButton => {
+     operators.forEach(operatorButton => {
         operatorButton.addEventListener('click', (e) => {
             const symbol = e.currentTarget.querySelector('span')?.textContent.trim() || '';
+             if (outputText.value !== '') {
+                const firstNum = outputText.value; 
+                sessionStorage.setItem('secondNumber', firstNum); 
+                console.log('Сохранено первое число:', firstNum);
+            }
             outputText.value = symbol;        
-            shouldClearOnNumber = true;       
+            shouldClearOnNumber = true;  
+            sessionStorage.setItem('symbol', symbol);
+            
         });
     });
+    
+}
+
+function mathFunctions(){
+    const btnMathFunctions = [
+        buttonPow, 
+        buttonPowB, 
+        buttonModule, 
+        buttonSqrt, 
+        buttonSqrtN, 
+        buttonPiSymbol, 
+        buttonSin, 
+        buttonCos, 
+        buttonTan
+    ]
+
+    btnMathFunctions.forEach(btn =>{
+        btn.addEventListener('click', (e) => {
+            console.log('click')
+            const mathSymbolFun = e.currentTarget.querySelector('span')?.textContent.trim() || '';
+            //outputText.value = `функция выбрана ${mathSymbolFun}`;
+            sessionStorage.setItem('symbol', mathSymbolFun);
+        })
+    })
+}
+
+symbolAns.addEventListener('click', (e) => {
+    outputText.value = localStorage.getItem('res', 1);
+})
+
+buttonDeleteAll.addEventListener('click',() =>{
+    outputText.value = "";
+})
+
+function result(number){
+    buttonArrowConfirmation.addEventListener('click', (e) => {
+        const firstNum = Number(sessionStorage.getItem('firstNum', 1));
+        const secondNum = Number(sessionStorage.getItem('secondNumber', 1));
+        const operator = sessionStorage.getItem('symbol',1);
+        let result = 0;
+        switch (operator){
+            case '-':    
+               result =  secondNum - firstNum;
+               localStorage.setItem('res', outputText.value)
+            break;
+            case '+':    
+               result =  secondNum + firstNum;
+               localStorage.setItem('res', outputText.value)
+            break;
+            case '/':    
+               result =  secondNum / firstNum;
+               localStorage.setItem('res', outputText.value)
+            break;
+            case '*':    
+               result =  secondNum * firstNum;
+               localStorage.setItem('res', outputText.value)
+            break;
+            case 'a2':
+                result = Math.pow(firstNum, 2);
+                localStorage.setItem('res', outputText.value)
+            case 'cos':    
+               result =  Math.cos(number);
+               localStorage.setItem('res', outputText.value)
+            break;
+            case 'sin':    
+               result =  Math.sin(number);
+               localStorage.setItem('res', outputText.value)
+            break;
+        }
+        outputText.value = result;
+        
+    })
+    
 }
 
 actionNumbersButtons();
 actionSymbolButtons();
+mathFunctions();
+result(sessionStorage.getItem('firstNum', 1));
