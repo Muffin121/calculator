@@ -12,6 +12,10 @@
 
   .reset__buttons {
     cursor: pointer;
+
+    .button-delete {
+      max-width: rem(90);
+    }
   }
 
   .container__buttons--action {

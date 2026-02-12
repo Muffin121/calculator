@@ -101,5 +101,6 @@ export const symbolPlus = gridContainerNumbers?.querySelector(selectorsGridConta
 export const buttonProcent = gridContainerAdditionally?.querySelector(selectorsGridContainerAdditionally.buttonProccent);
 export const buttonFraction = gridContainerAdditionally?.querySelector(selectorsGridContainerAdditionally.buttonFraction);
 export const buttonArrowLeft = gridContainerAdditionally?.querySelector(selectorsGridContainerAdditionally.buttonArrowLeft);
+export const buttonArrowRight = gridContainerAdditionally?.querySelector(selectorsGridContainerAdditionally.buttonArrowRight);
 export const buttonDeleteSymbol = gridContainerAdditionally?.querySelector(selectorsGridContainerAdditionally.buttonDeleteSymbol);
 export const buttonArrowConfirmation = gridContainerAdditionally?.querySelector(selectorsGridContainerAdditionally.buttonArrowConfirmation);
