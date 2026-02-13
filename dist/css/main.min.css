@@ -246,8 +246,6 @@ svg * {
 }
 .container .reset__buttons {
   cursor: pointer;
-}
-.container .reset__buttons .button-delete {
   max-width: 5.625rem;
 }
 .container .container__buttons--action {
