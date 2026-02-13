@@ -1,0 +1,382 @@
+@charset "UTF-8";
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/**
+   Убираем внутренние отступы слева тегам списков,
+   у которых есть атрибут class
+  */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+   Убираем внешние отступы body и двум другим тегам,
+   у которых есть атрибут class
+  */
+body,
+:where(blockquote, figure, fieldset):where([class]) {
+  margin: 0;
+}
+
+/**
+   Убираем внешние отступы вертикали нужным тегам,
+   у которых есть атрибут class
+  */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  padding: 0;
+  border: none;
+}
+
+/**
+   Убираем стандартный маркер маркированному списку,
+   у которого есть атрибут class
+  */
+:where(ul[class]) {
+  list-style: none;
+}
+
+:where(address[class]) {
+  font-style: normal;
+}
+
+/**
+   Обнуляем вертикальные внешние отступы параграфа,
+   объявляем локальную переменную для внешнего отступа вниз,
+   чтобы избежать взаимодействие с более сложным селектором
+  */
+p {
+  --paragraphMarginBottom: 24px;
+  margin-block: 0;
+}
+
+/**
+   Внешний отступ вниз для параграфа без атрибута class,
+   который расположен не последним среди своих соседних элементов
+  */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+   Упрощаем работу с изображениями и видео
+  */
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/**
+   Наследуем свойства шрифт для полей ввода
+  */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+  height: 100%;
+  /**
+     Убираем скачок интерфейса по горизонтали
+     при появлении / исчезновении скроллбара
+    */
+  scrollbar-gutter: stable;
+  /**
+     Плавный скролл
+    */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+  min-height: 100%;
+  /**
+     Унифицированный интерлиньяж
+    */
+  line-height: 1.5;
+}
+
+/**
+   Нормализация высоты элемента ссылки при его инспектировании в DevTools
+  */
+a:where([class]) {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+/**
+   Курсор-рука при наведении на элемент
+  */
+button,
+label {
+  cursor: pointer;
+}
+
+/**
+   Убирает серую подсветку при тапе на мобильных устройствах (iOS/Android)
+  */
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+   (за исключением тех, у которых уже указан
+   атрибут fill со значением 'none' или начинается с 'url')
+  */
+:where([fill]:not([fill=none], [fill^=url])) {
+  fill: currentColor;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+   (за исключением тех, у которых уже указан
+   атрибут stroke со значением 'none')
+  */
+:where([stroke]:not([stroke=none], [stroke^=url])) {
+  stroke: currentColor;
+}
+
+/**
+   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+  */
+svg * {
+  -webkit-transition-property: fill, stroke;
+  transition-property: fill, stroke;
+}
+
+/**
+   Приведение рамок таблиц в классический 'collapse' вид
+  */
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentColor;
+}
+
+/**
+   Удаляем все анимации и переходы для людей,
+   которые предпочитают их не использовать
+  */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  --black: #000000;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+@media (width <= 47.99875rem) {
+  .hiiden-mobile {
+    display: none !important;
+  }
+}
+
+@media (width > 47.99875rem) {
+  .visible-mobile {
+    display: none !important;
+  }
+}
+
+.container {
+  min-width: 37.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+.container .output__text {
+  width: 100%;
+  height: 1.875rem;
+  border: 1px #000000 solid;
+}
+.container .reset__buttons {
+  cursor: pointer;
+}
+.container .reset__buttons .button-delete {
+  max-width: 5.625rem;
+}
+.container .container__buttons--action {
+  width: 100%;
+}
+.container .container__buttons--action .special__characters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-column-gap: 1.25rem;
+     -moz-column-gap: 1.25rem;
+          column-gap: 1.25rem;
+  background: rgba(0, 0, 0, 0.0705882353);
+}
+.container .container__buttons--action .special__characters .grid__container {
+  padding-top: 0.3125rem;
+  padding-left: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  max-width: 18.75rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.625rem;
+  text-align: center;
+}
+.container .container__buttons--action .special__characters .grid__container > div {
+  height: 1.875rem;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #d8d8d8;
+  -webkit-transition: all 0.6s ease-in-out;
+  transition: all 0.6s ease-in-out;
+}
+.container .container__buttons--action .special__characters .grid__container > div:hover {
+  background: rgba(155, 148, 148, 0.2196078431);
+}
+.container .container__buttons--action .special__characters .grid__container .vertical-text {
+  font-size: 80%;
+  padding: -1px;
+  vertical-align: 0.5em;
+}
+.container .container__buttons--action .special__characters .grid__container .button-sqrt-n span img {
+  text-align: center;
+  margin: 0.3125rem 0.625rem 0rem 0.625rem;
+}
+.container .container__buttons--action .special__characters .grid__container-numbers {
+  padding-top: 0.3125rem;
+  padding-left: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  max-width: 18.75rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.625rem;
+  text-align: center;
+}
+.container .container__buttons--action .special__characters .grid__container-numbers > div {
+  height: 1.875rem;
+  width: 2.5rem;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #d8d8d8;
+}
+.container .container__buttons--action .special__characters .grid__container-numbers [class^=number] {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1294117647)), to(rgba(0, 0, 0, 0.1607843137)));
+  background: linear-gradient(rgba(0, 0, 0, 0.1294117647), rgba(0, 0, 0, 0.1607843137));
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+}
+.container .container__buttons--action .special__characters .grid__container-numbers [class^=number]:hover {
+  background: #fbf9f9;
+}
+.container .container__buttons--action .special__characters .grid__container-numbers [class^=symbol] {
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+}
+.container .container__buttons--action .special__characters .grid__container-numbers [class^=symbol]:hover {
+  background: rgba(155, 148, 148, 0.2196078431);
+}
+.container .container__buttons--action .special__characters .grid__container-additionally {
+  padding-top: 0.3125rem;
+  padding-left: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  max-width: 10rem;
+  display: grid;
+  grid-template-columns: repeat(2, 4.375rem);
+  gap: 0.625rem;
+  text-align: center;
+}
+.container .container__buttons--action .special__characters .grid__container-additionally .button-delete-symbol {
+  padding-top: 0.1875rem;
+  grid-column: span 2;
+  justify-self: stretch;
+  border-radius: 0.75rem;
+  height: 1.875rem;
+  display: grid;
+  place-items: center;
+}
+.container .container__buttons--action .special__characters .grid__container-additionally .button-delete-symbol svg {
+  width: 100%;
+  height: 100%;
+}
+.container .container__buttons--action .special__characters .grid__container-additionally .button-arrow-confirmation {
+  grid-column: span 2;
+  justify-self: stretch;
+  background: #0066ff;
+  border-radius: 0.75rem;
+  height: 1.875rem;
+  display: grid;
+  place-items: center;
+}
+.container .container__buttons--action .special__characters .grid__container-additionally .button-arrow-confirmation svg {
+  width: 2rem;
+  height: 2rem;
+  stroke: white;
+}
+.container .container__buttons--action .special__characters .grid__container-additionally > div {
+  height: 1.875rem;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #d8d8d8;
+}
+.container .container__buttons--action .special__characters .grid__container-additionally [class^=button] {
+  height: 1.875rem;
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+}
+.container .container__buttons--action .special__characters .grid__container-additionally [class^=button]:hover {
+  background: #fbf9f9;
+}/*# sourceMappingURL=main.min.css.map */
